@@ -40,3 +40,17 @@ client.on('message', message => {
 - `options.emitPlaySongAfterFetching`: Default is `false`. Emit `playSong` event before or after fetching all the songs.
   > If `false`, DisTube plays the first song -> emits `playSong` events -> fetches all the rest\
   > If `true`, DisTube plays the first song -> fetches all the rest -> emits `playSong` events
+
+
+#### Note:
+- It's in beta stage, it has some limitations.
+- Cannot validate links which contains country code ( likes `https://www.deezer.com/en/track/739870792` or `https://deezer.com/en/playlist/3155776842`)
+
+- Supports the following type of links
+
+https://www.deezer.com/track/739870792
+https://deezer.com/track/739870792
+https://deezer.com/playlist/3155776842
+https://www.deezer.com/playlist/3155776842
+https://deezer.com/album/58671252
+https://www.deezer.com/album/58671252
