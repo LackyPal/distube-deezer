@@ -34,7 +34,7 @@ module.exports = class DeezerPlugin extends CustomPlugin {
     const rawData = await fetch(resolvedUrl).then((res) => res.json());
 
     if (rawData.type === "track") {
-      const query = `${rawData.title} ${rawData.contributors.map(c => c.name).join(" ")}`;
+      const query = `${rawData.title} ${rawData.artist.name}`;
       const result = await this.search(query);
       if (!result) throw new Error(`[DeezerPlugin] Cannot find "${query}" on YouTube.`);
       await DT.playVoiceChannel(voiceChannel, result, { member, textChannel, skip });
