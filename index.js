@@ -41,7 +41,7 @@ module.exports = class DeezerPlugin extends CustomPlugin {
       if (!result) throw new Error(`[DeezerPlugin] Cannot find "${query}" on YouTube.`);
       await DT.playVoiceChannel(voiceChannel, result, { member, textChannel, skip });
     } else {
-      const playlist = resolvePlaylist(rawData, member);
+      const playlist = resolvePlaylist(rawData, url, member);
       let firstSong;
       while (!firstSong && playlist.songs.length) {
         const result = await this.search(playlist.songs.shift());
@@ -95,7 +95,7 @@ module.exports = class DeezerPlugin extends CustomPlugin {
   }
 };
 
-const resolvePlaylist = (rawData, member) => {
+const resolvePlaylist = (rawData, url, member) => {
   const songs = rawData.tracks.data.map(item => {
     const track = item;
     if (track.type !== "track") return null;
@@ -106,7 +106,7 @@ const resolvePlaylist = (rawData, member) => {
   return new Playlist({
     name: rawData.title,
     thumbnail: `${rawData}.${thumType}_xl` || `${rawData}.${thumType}_big` || `${rawData}.${thumType}_medium` || `${rawData}.${thumType}_small` || `${rawData}.${thumType}` || "",
-    url: rawData.link || "",
+    url: rawData.link || url,
     songs
   }, member);
 };
