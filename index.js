@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 const { CustomPlugin, Song, Playlist } = require("distube");
-const urlRegex = /^https?:\/\/(?:www\.)?deezer\.com\/(track|album|playlist)\/(\d+)$/;
+const urlRegex = /^(https?:\/\/)?(?:www\.)?deezer\.com\/([a-z][a-z]\/)?(track|album|playlist)\/(\d+)$/gm;
 const API_URL = "https:\/\/api.deezer.com\/";
 const SUPPORTED_TYPES = ["album", "playlist", "track"];
 
