@@ -33,7 +33,7 @@ module.exports = class DeezerPlugin extends CustomPlugin {
 
     const rawData = await fetch(resolvedUrl).then((res) => res.json());
 
-    if (!rawData) throw new Error(`[DeezerPlugin] Cannot find any data for ${url}.`);
+    if (!rawData) throw new Error(`[DeezerPlugin] Cannot find any data for "${url}" on Deezer.`);
 
     if (rawData.type === "track") {
       const query = `${rawData.title} ${rawData.artist.name}`;
