@@ -1,6 +1,6 @@
 {
   "name": "distube-deezer",
-  "version": "0.1.0-beta",
+  "version": "0.1.1",
   "description": "A DisTube custom plugin for supporting Deezer.",
   "main": "index.js",
   "typings": "index.d.ts",
